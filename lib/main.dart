@@ -44,6 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // }
 
   String greeting = "";
+  String checkColor = "black";
+  int timer2 = 10;
   late Timer _timer;
 
   @override
@@ -51,19 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
-        greeting = "Periodic ${DateTime.now().second}";
+        greeting = "Periodic ${timer2}";
+        if (timer2 > 0) {
+          checkColor = "black";
+          timer2--;
+        }
+        else {
+          timer2 = 0;
+          checkColor = "red";
+        }
       });
     });
-
-
-    // Timer.periodic(const Duration(seconds: 1), (Timer timer) {
-    //   if (!_isRunning) {
-    //     // cancel the timer
-    //     timer.cancel();
-    //   }
-    //   // _addItem();
-    // });
-    // super.initState();
   }
 
 
@@ -78,44 +78,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Center(child: Column(
           children: [
-            Text(greeting, style: TextStyle(fontSize: 30, color: Colors.black),),
+            Text(greeting, style: TextStyle(fontSize: 30, color: checkColor != "red" ? Colors.black : Colors.red),),
             TextButton(onPressed: (){
               _timer.cancel();
-            }, child: const Text("Stop"),)
+              setState(() {
+              });
+            }, child: const Text("Stop"),),
+            TextButton(onPressed: (){setState(() {
+              timer2 = 10;
+            });}, child: const Text("Start"))
           ],
         ),),
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: const Text('Kindacode.com'),
-  //     ),
-  //     body: ListView.builder(
-  //       itemCount: _items.length,
-  //       itemBuilder: (_, index) {
-  //         return Card(
-  //           margin: const EdgeInsets.all(10),
-  //           color: Colors.amber,
-  //           elevation: 5,
-  //           child: ListTile(
-  //             title: Text(_items[index]),
-  //           ),
-  //         );
-  //       },
-  //     ),
-  //     // This button will stop the timer
-  //     floatingActionButton: FloatingActionButton(
-  //       onPressed: () {
-  //         setState(() {
-  //           _isRunning = false;
-  //         });
-  //       },
-  //       child: const Icon(Icons.stop_circle),
-  //     ),
-  //   );
-  // }
 }
+
