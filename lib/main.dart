@@ -15,6 +15,7 @@ import 'package:flutter_utils/101/image_learn.dart';
 import 'dart:async';
 
 import 'package:flutter_utils/101/text_learn.dart';
+import 'package:flutter_utils/demos/demo_1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
       // home: StatelessLearn(),
       // home: PaddingLearn(),
       // home:CardLearn(),
-      home: ImageLearn(),
+      // home: ImageLearn(),
+      home: DemoOne(),
       );
   }
 }
