@@ -5,8 +5,12 @@ import 'package:flutter_utils/101/app_bar_learn.dart';
 import 'package:flutter_utils/101/button_learn.dart';
 import 'package:flutter_utils/101/card_learner.dart';
 import 'package:flutter_utils/101/color_learn.dart';
+import 'package:flutter_utils/101/column_row_learn.dart';
 import 'package:flutter_utils/101/container_sized_box_learn.dart';
+import 'package:flutter_utils/101/custom_widget_learn.dart';
 import 'package:flutter_utils/101/icon_learn.dart';
+import 'package:flutter_utils/101/indicator_learn.dart';
+import 'package:flutter_utils/101/list_tile_learn.dart';
 import 'package:flutter_utils/101/padding_learn.dart';
 import 'package:flutter_utils/101/scaffold_learn.dart';
 import 'package:flutter_utils/101/stateless_learn.dart';
@@ -23,22 +27,25 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( //Çoğunlukla projelerde 1 tane olur
+    return MaterialApp(
+      //Çoğunlukla projelerde 1 tane olur
       title: "Welcome to Flutter", // Projenin başlangıç yeri, ana root
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith( //App barlara dağıtması copyWith sayesinde
-        appBarTheme:
-          AppBarTheme(
+      theme: ThemeData.dark().copyWith(
+          //App barlara dağıtması copyWith sayesinde
+          progressIndicatorTheme:
+              ProgressIndicatorThemeData(color: Colors.white),
+          appBarTheme: const AppBarTheme(
             centerTitle: true,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             backgroundColor: Colors.red,
             elevation: 0,
           ) // her appbar için ayrı ayrı yazmayı engelleyip
-        //global olarak style sağlar
-      ),
+          //global olarak style sağlar
+          ),
       // home: const TextLearn(),
       // home: ContainerSizedBoxLearn(),
       // home: ScaffoldLearnView(),
@@ -50,8 +57,11 @@ class MyApp extends StatelessWidget {
       // home: PaddingLearn(),
       // home:CardLearn(),
       // home: ImageLearn(),
-      home: DemoOne(),
-      );
+      // home: DemoOne(),
+      // home: CustomWidgetLearn(),
+      // home: IndicatorLearn(),
+      // home: ListTileLEarn(),
+      home: ColumnRowLearn(),
+    );
   }
 }
-

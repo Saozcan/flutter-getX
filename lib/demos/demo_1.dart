@@ -6,7 +6,7 @@ import 'package:flutter_utils/101/image_learn.dart';
 class DemoOne extends StatelessWidget {
   const DemoOne({Key? key}) : super(key: key);
 
-  final String _title = "Create your first note";
+  final String _title = "";
 
   @override
   Widget build(BuildContext context) {
